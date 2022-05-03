@@ -1,7 +1,7 @@
 <template>
 <div class="right-menu" >
-    <a class="menu-btn">Menu <i class="fas fa-bars"></i> </a>
-    <ul>
+    <a class="menu-btn">Menu <i class="fas fa-bars" style="cursor: pointer;" @click="isShowing ^= true"></i> </a>
+    <ul id="menu-id" v-show="isShowing">
         <li v-for="menu of RightMenu" :key="menu.$id">{{menu.name}}</li>
     </ul>
 </div>
@@ -17,6 +17,7 @@ export default {
     },
     data() {
       return {
+        isShowing:true,
         RightMenu: [],
         errors: []
       };

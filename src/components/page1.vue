@@ -36,7 +36,7 @@
        
     </div>
     <div class="col-md-3">
-        <div class="image-area" style="padding-left: 0px;">
+        <div class="image-area" style="padding-left: 0px; width: 80%;">
             <img :src="GetCampaigns[3].url" alt="">
         </div>
     </div>
