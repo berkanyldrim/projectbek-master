@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <div class="top-area">
             <a class="btn ana-ekran-btn"><i class="far fa-arrow-alt-circle-left"></i><router-link class="dropdown-item" to="/">Ana Ekrana Dön</router-link></a>
-            <div class="input-group rounded" style="width: 85%;">
+            <div class="input-group rounded" style="width: 85%; margin-left: 10px;">
                 <input type="search" class="form-control rounded" style="height: 30px;" placeholder="Ürünlerde marka ya da ürün adı yazarak arayın.." aria-label="Search" />
                 <i class="fas fa-search"></i>
                 
