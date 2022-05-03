@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="top-area">
-                <a class="btn ana-ekran-btn"><i class="far fa-arrow-alt-circle-left"></i>Ana Ekrana Dön</a>
+                <a class="btn ana-ekran-btn"><i class="far fa-arrow-alt-circle-left"></i><router-link class="dropdown-item" to="/">Ana Ekrana Dön</router-link></a>
                 <span style="cursor: pointer;">Sponsor Ürün Listesi</span>
             </div>
             

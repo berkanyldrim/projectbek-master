@@ -12,6 +12,11 @@
                     </li>
                     
                 </ul>
+
+                <div style="float: right;">
+                  <a class="btn ana-ekran-btn"><i class="far fa-arrow-alt-circle-left"></i><router-link class="dropdown-item" to="/page2">Page2</router-link></a>
+                  <a class="btn ana-ekran-btn"><i class="far fa-arrow-alt-circle-left"></i><router-link class="dropdown-item" to="/page3">Page3</router-link></a>
+                </div>
             </div>
 
         </div>

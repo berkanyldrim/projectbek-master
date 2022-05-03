@@ -81,7 +81,7 @@ transform: scale(1.1);
     color: #6C6C6C;
     font-weight: bold;
 }
-.top-area .ana-ekran-btn{
+ .ana-ekran-btn{
     display: flex;
     height: 30px;
     border: 1px solid #ccc;
@@ -89,6 +89,9 @@ transform: scale(1.1);
     align-items: center;
     font-size: 14px;
     gap: 10px;
+}
+.ana-ekran-btn:hover a{
+    background-color: transparent !important;
 }
 .product-area{
     padding: 0 40px;
@@ -125,6 +128,21 @@ transform: scale(1.1);
     font-size: 14px
 }
 
+.product-bottom{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.product-count{
+    background-color: rgb(238, 238, 238);
+    border-radius: 12px !important;
+    display: flex;
+    gap: 20px;
+    padding: 5px;
+    align-items: center;
+}
 
 footer{
     padding: 0 40px !important;

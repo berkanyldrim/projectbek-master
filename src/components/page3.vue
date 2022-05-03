@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="top-area">
-            <a class="btn ana-ekran-btn"><i class="far fa-arrow-alt-circle-left"></i>Ana Ekrana Dön</a>
+            <a class="btn ana-ekran-btn"><i class="far fa-arrow-alt-circle-left"></i><router-link class="dropdown-item" to="/">Ana Ekrana Dön</router-link></a>
             <div class="input-group rounded" style="width: 85%;">
                 <input type="search" class="form-control rounded" style="height: 30px;" placeholder="Ürünlerde marka ya da ürün adı yazarak arayın.." aria-label="Search" />
                 <i class="fas fa-search"></i>
@@ -25,70 +25,28 @@
 <div class="row">
     <div class="col-md-9">
         <div class="product-area row">
-                <div class="product-item ">
-                    <div class="product-img">
-                        <img src="../../public/img/img1.jpg" alt="">
+
+                <div class="product-item " v-for="product of GetProduct" :key="product.$id" style="height: 420px !important;">
+                    <div class="product-img" style="height: 260px;">
+                        <img :src="product.url" alt="">
                     </div>
+                    <br>
+                    <br>
                     <div class="product-text">
-                        <span class="product-name">Arçelik Robot Süpürge</span>
+                        <span class="product-name">{{ product.name}}</span>
                         <br>
-                        <span class="product-code">RS 9034 HM</span>
+                        <span class="product-code">{{product.description}}</span>
                         <br>
-                        <span class="product-piece">Çekilişte Verilecek Ürün Sayısı: 3 Adet</span>
-                    </div>
-
-                </div>
-
-                <div class="product-item ">
-                    <div class="product-img">
-                        <img src="../../public/img/img1.jpg" alt="">
-                    </div>
-                    <div class="product-text">
-                        <span class="product-name">Arçelik Robot Süpürge</span>
-                        <br>
-                        <span class="product-code">RS 9034 HM</span>
-                        <br>
-                        <span class="product-piece">Çekilişte Verilecek Ürün Sayısı: 3 Adet</span>
-                    </div>
-
-                </div>
-
-                <div class="product-item ">
-                    <div class="product-img">
-                        <img src="../../public/img/img1.jpg" alt="">
-                    </div>
-                    <div class="product-text">
-                        <span class="product-name">Arçelik Robot Süpürge</span>
-                        <br>
-                        <span class="product-code">RS 9034 HM</span>
-                        <br>
-                        <span class="product-piece">Çekilişte Verilecek Ürün Sayısı: 3 Adet</span>
-                    </div>
-
-                </div>
-                <div class="product-item ">
-                    <div class="product-img">
-                        <img src="../../public/img/img1.jpg" alt="">
-                    </div>
-                    <div class="product-text">
-                        <span class="product-name">Arçelik Robot Süpürge</span>
-                        <br>
-                        <span class="product-code">RS 9034 HM</span>
-                        <br>
-                        <span class="product-piece">Çekilişte Verilecek Ürün Sayısı: 3 Adet</span>
-                    </div>
-
-                </div>
-                <div class="product-item ">
-                    <div class="product-img">
-                        <img src="../../public/img/img1.jpg" alt="">
-                    </div>
-                    <div class="product-text">
-                        <span class="product-name">Arçelik Robot Süpürge</span>
-                        <br>
-                        <span class="product-code">RS 9034 HM</span>
-                        <br>
-                        <span class="product-piece">Çekilişte Verilecek Ürün Sayısı: 3 Adet</span>
+                        <div class="product-bottom">
+                            <span class="product-point">{{product.price}} BEK Puanı</span>
+                            <span class="product-count">
+                                <span class="btn" id="minus"><i class="far fa-minus-circle" ></i> </span>
+                                
+                                <span id="numberPlace">0</span> 
+                                <span class="btn" id="plus"><i class="far fa-plus-circle" ></i> </span>
+                                
+                            </span>
+                        </div>
                     </div>
 
                 </div>
@@ -122,7 +80,29 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
     name:"PageThree",
+    async created() {
+      await this.getProductAsync();
+    },
+    data() {
+      return {
+        GetProduct: [],
+        errors: []
+      };
+    },
+    methods: {
+      async getProductAsync() {
+        try {
+          const response = await axios.get(
+            "https://api.bek.org.tr/api/Test/GetProducts"
+          );
+          this.GetProduct = response.data.$values;
+        } catch (error) {
+          this.errors.push(error);
+        }
+      }
+    }
 }
 </script>
