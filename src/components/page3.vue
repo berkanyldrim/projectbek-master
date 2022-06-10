@@ -13,7 +13,8 @@
         <div class="top-area">
             <a class="btn ana-ekran-btn"><i class="far fa-arrow-alt-circle-left"></i><router-link class="dropdown-item" to="/">Ana Ekrana Dön</router-link></a>
             <div class="input-group rounded" style="width: 85%; margin-left: 10px;">
-                <input type="search" class="form-control rounded" style="height: 30px;" placeholder="Ürünlerde marka ya da ürün adı yazarak arayın.." aria-label="Search" />
+
+                <input  v-model="sProduct" type="search" class="form-control rounded" style="height: 30px;" placeholder="Ürünlerde marka ya da ürün adı yazarak arayın.." aria-label="Search" />
                 <i class="fas fa-search"></i>
                 
             </div>
@@ -89,8 +90,16 @@ export default {
     data() {
       return {
         GetProduct: [],
-        errors: []
+        GetAllProduct: [],
+        errors: [],
+        sProduct: ''
       };
+    },
+    watch:{
+        sProduct: function(s){
+            this.GetProduct=this.GetAllProduct.filter(a => a.name.toLowerCase().includes(s.toLowerCase()));
+            console.log(this.GetAllProduct);
+        }
     },
     methods: {
       async getProductAsync() {
@@ -98,6 +107,7 @@ export default {
           const response = await axios.get(
             "https://api.bek.org.tr/api/Test/GetProducts"
           );
+          this.GetAllProduct = response.data.$values;
           this.GetProduct = response.data.$values;
         } catch (error) {
           this.errors.push(error);
